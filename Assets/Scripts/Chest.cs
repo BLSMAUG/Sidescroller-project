@@ -15,6 +15,7 @@ public class Chest : ObjectInteraction
     {
         ChestId ??= GlobalHelper.GenerateUniqueId(gameObject);
         interactAction = InputSystem.actions.FindAction("Interact");
+        isInteractable = true;
     }
 
     void Update()
@@ -31,11 +32,6 @@ public class Chest : ObjectInteraction
     private void OpenChest()
     {
         SetOpened(true);
-
-        if (itemPrefab)
-        {
-            GameObject droppedItem = Instantiate(itemPrefab, transform.position + Vector3.down, Quaternion.identity);
-        }
     }
 
     public void SetOpened(bool opened)
@@ -44,7 +40,9 @@ public class Chest : ObjectInteraction
         if (IsOpened = opened)
         {
             GetComponent<SpriteRenderer>().sprite = openedSprite;
+            
         }
+        isInteractable = false;
     }
 
 

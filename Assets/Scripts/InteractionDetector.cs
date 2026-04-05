@@ -1,14 +1,17 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class InteractionDetector : MonoBehaviour, IInteractable
+public class InteractionDetector : ObjectInteraction, IInteractable
 {
 
     public GameObject interactionIcon;
 
     public void Interact()
     {
-        interactionIcon.SetActive(true);
+        if (isInteractable == true)
+        {
+            interactionIcon.SetActive(true);
+        }
     }
 
     public void EndInteract()

@@ -1,15 +1,14 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public abstract class ObjectInteraction : MonoBehaviour
+public class ObjectInteraction : MonoBehaviour
 {
-    public bool isInteractable = false;
+    public bool isInteractable;
     
     protected void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.TryGetComponent(out IInteractable _interact))
         {
-            isInteractable = true;
             _interact.Interact();
         }
     }
@@ -18,7 +17,6 @@ public abstract class ObjectInteraction : MonoBehaviour
     {
         if (collision.TryGetComponent(out IInteractable _endInteract))
         {
-            isInteractable = false;
             _endInteract.EndInteract();
         }
     }

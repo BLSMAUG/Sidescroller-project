@@ -201,6 +201,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da73d5b0a5cdaef4d8b4f0303d4050f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InteractionDetector
+  isInteractable: 1
   interactionIcon: {fileID: 522751319}
 --- !u!1 &519420028
 GameObject:
@@ -1266,7 +1267,6 @@ GameObject:
   - component: {fileID: 1745826057}
   - component: {fileID: 1745826056}
   - component: {fileID: 1745826055}
-  - component: {fileID: 1745826058}
   - component: {fileID: 1745826054}
   m_Layer: 6
   m_Name: Ground
@@ -1393,18 +1393,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1745826058
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1745826053}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bbb6a4110d061214688ae0684da9b057, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GroundBehaviour
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
