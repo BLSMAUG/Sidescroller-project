@@ -105,7 +105,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   unitName: MC
-  unitLevel: 999
+  unitLevel: 1
   damage: 10
+  heal: 8
+  maxSpirit: 50
+  spirit: 50
   maxHP: 25
-  currentHP: 20
+  currentHP: 25

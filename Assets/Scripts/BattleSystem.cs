@@ -30,6 +30,14 @@ public class BattleSystem : MonoBehaviour
         StartCoroutine(SetupBattle());
     }
 
+    private void Update()
+    {
+        playerHUD.SetHPPercent(playerUnit);
+        playerHUD.SetSpiritPercent(playerUnit);
+
+        enemyHUD.SetHPPercent(enemyUnit);
+    }
+
     IEnumerator SetupBattle()
     {
         GameObject playerGO = Instantiate(playerPrefab, playerBattleStation);
@@ -59,7 +67,7 @@ public class BattleSystem : MonoBehaviour
         dialogueText.text = "The attack hit the enemy!";
 
         yield return new WaitForSeconds(2f);
-
+        
         if (isDead)
         {
             state = BattleState.WON;
@@ -74,17 +82,33 @@ public class BattleSystem : MonoBehaviour
 
     IEnumerator PlayerHeal()
     {
-        playerUnit.Heal(5);
+        bool canHeal = playerUnit.Heal(playerUnit.heal);
 
-        playerHUD.SetHP(playerUnit.currentHP);
-        dialogueText.text = "You feel better!";
+        if (canHeal)
+        {
+            playerHUD.SetSpirit(playerUnit.spirit);
+            playerHUD.SetHP(playerUnit.currentHP);
 
-        yield return new WaitForSeconds(2f);
+            dialogueText.text = "You feel better!";
 
-        state = BattleState.ENEMYTURN;
-        StartCoroutine(EnemyTurn());
+            yield return new WaitForSeconds(2f);
+
+            state = BattleState.ENEMYTURN;
+            StartCoroutine(EnemyTurn());
+        }
+        else
+        {
+            dialogueText.text = "You don't have enough spirit.";
+
+            yield return new WaitForSeconds(2f);
+
+            dialogueText.text = "Choose an action : ";
+        }
+
+        
     }
 
+    
     IEnumerator EnemyTurn()
     {
         dialogueText.text = enemyUnit.unitName + " attacks!";

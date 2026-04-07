@@ -6,7 +6,6 @@ public class Chest : ObjectInteraction
 
     public bool IsOpened { get; private set;  }
     //public string ChestId { get; private set; }
-    public GameObject itemPrefab;
     public Sprite openedSprite;
 
     InputAction interactAction;
@@ -15,7 +14,6 @@ public class Chest : ObjectInteraction
     {
         //ChestId ??= GlobalHelper.GenerateUniqueId(gameObject);
         interactAction = InputSystem.actions.FindAction("Interact");
-        isInteractable = true;
     }
 
     void Update()

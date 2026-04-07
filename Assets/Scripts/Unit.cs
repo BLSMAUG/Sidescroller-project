@@ -9,6 +9,10 @@ public class Unit : MonoBehaviour
     public int unitLevel;
 
     public int damage;
+    public int heal;
+
+    public int maxSpirit;
+    public int spirit;
 
     public int maxHP;
     public int currentHP;
@@ -27,12 +31,21 @@ public class Unit : MonoBehaviour
         }
     }
 
-    public void Heal(int amount)
+    public bool Heal(int amount)
     {
-        currentHP += amount;
-        if (currentHP > maxHP)
+        if (spirit > 10)
         {
-            currentHP = maxHP;
+            spirit -= 10;
+            currentHP += amount;
+            if (currentHP > maxHP)
+            {
+                currentHP = maxHP;
+            }
+            return true;
         }
+        return false;
+        
     }
+    
+
 }

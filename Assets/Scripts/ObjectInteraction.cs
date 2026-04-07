@@ -10,6 +10,7 @@ public class ObjectInteraction : MonoBehaviour
         if (collision.TryGetComponent(out IInteractable _interact))
         {
             _interact.Interact();
+            isInteractable = true;
         }
     }
 
@@ -18,6 +19,7 @@ public class ObjectInteraction : MonoBehaviour
         if (collision.TryGetComponent(out IInteractable _endInteract))
         {
             _endInteract.EndInteract();
+            isInteractable = false;
         }
     }
 }
