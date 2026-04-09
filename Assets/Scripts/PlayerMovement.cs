@@ -29,6 +29,8 @@ public class PlayerMovement2D : MonoBehaviour
     private float dashTimer;
     private float cooldownTimer;
 
+    public GameObject bulleInterraction;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -95,8 +97,15 @@ public class PlayerMovement2D : MonoBehaviour
 
         // Tourne le sprite
         if (horizontalInput > 0)
+        {
             transform.localScale = new Vector3(1, 1, 1);
+            bulleInterraction.transform.localScale = new Vector3(1, 1, 1);
+        }
+            
         else if (horizontalInput < 0)
+        {
             transform.localScale = new Vector3(-1, 1, 1);
+            bulleInterraction.transform.localScale = new Vector3(-1, 1, 1);
+        }
     }
 }

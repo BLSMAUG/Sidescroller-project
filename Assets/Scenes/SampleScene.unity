@@ -1031,6 +1031,7 @@ MonoBehaviour:
   dashForce: 15
   dashDuration: 0.15
   dashCooldown: 5
+  bulleInterraction: {fileID: 522751319}
 --- !u!4 &1315079450
 Transform:
   m_ObjectHideFlags: 0
