@@ -5,7 +5,6 @@ public class Chest : ObjectInteraction
 {
 
     public bool IsOpened { get; private set;  }
-    //public string ChestId { get; private set; }
     public Sprite openedSprite;
 
     InputAction interactAction;

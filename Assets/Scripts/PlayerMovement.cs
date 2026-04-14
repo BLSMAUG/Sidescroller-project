@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovement2D : MonoBehaviour
@@ -31,14 +32,24 @@ public class PlayerMovement2D : MonoBehaviour
 
     public GameObject bulleInterraction;
 
+    InputAction moveAction;
+    InputAction jumpAction;
+    InputAction dashAction;
+
+    
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        moveAction = InputSystem.actions.FindAction("Move");
+        jumpAction = InputSystem.actions.FindAction("Jump");
+        dashAction = InputSystem.actions.FindAction("Dash");
     }
 
     void Update()
     {
-        Move();
+        if (moveAction.IsPressed())
+            Move();
     }
 
     void FixedUpdate()
@@ -86,13 +97,18 @@ public class PlayerMovement2D : MonoBehaviour
 
     void Move()
     {
-        horizontalInput = Input.GetAxisRaw("Horizontal");
+        //horizontalInput = Input.GetAxisRaw("Horizontal");
+
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
 
-        if (Input.GetButtonDown("Jump") && isGrounded)
+        //if (Input.GetButtonDown("Jump") && isGrounded)
+        //    jumpRequested = true;
+        if (jumpAction.IsPressed() && isGrounded)
             jumpRequested = true;
 
-        if (Input.GetKeyDown(KeyCode.C) && cooldownTimer <= 0f && !isDashing)
+        //if (Input.GetKeyDown(KeyCode.C) && cooldownTimer <= 0f && !isDashing)
+        //    dashRequested = true;
+        if (dashAction.IsPressed() && cooldownTimer <= 0f && !isDashing)
             dashRequested = true;
 
         // Tourne le sprite

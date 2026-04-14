@@ -1,9 +1,10 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public static class GlobalHelper
+public class GlobalHelper : MonoBehaviour
 {
-    //public static string GenerateUniqueId(GameObject obj)
-    //{
-    //    return $"{obj.scene.name}_{obj.transform.position.x}_{obj.transform.position.y}"; // ex: Chest_3_4
-    //}
+    public void OnPlayButton()
+    {
+        SceneManager.LoadScene(1);
+    }
 }

@@ -17,7 +17,7 @@ public class Statue : ObjectInteraction
         {
             if (interactAction.IsPressed())
             {
-                SceneManager.LoadScene(1);
+                SceneManager.LoadScene(2);
             }
         }
     }
