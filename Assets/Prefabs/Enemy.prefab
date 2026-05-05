@@ -105,7 +105,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   unitName: Test
-  unitLevel: 2
-  damage: 5
-  maxHP: 30
-  currentHP: 30
+  unitLevel: 1
+  strength: 0
+  spirit: 0
+  constitution: 0
+  maxMana: 0
+  mana: 0
+  maxHP: 60
+  currentHP: 60
+  ennemyDamage: 10

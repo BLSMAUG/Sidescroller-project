@@ -502,7 +502,7 @@ GameObject:
   - component: {fileID: 284996667}
   - component: {fileID: 284996666}
   m_Layer: 5
-  m_Name: SpiritPanel
+  m_Name: ManaPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -889,7 +889,7 @@ GameObject:
   - component: {fileID: 409718212}
   - component: {fileID: 409718211}
   m_Layer: 5
-  m_Name: SpiritText
+  m_Name: ManaText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2916,10 +2916,10 @@ MonoBehaviour:
   levelText: {fileID: 1289202241}
   HPText: {fileID: 460484402}
   hpValue: 0
-  spiritText: {fileID: 966533425}
-  spiritValue: 0
+  manaText: {fileID: 966533425}
+  manaValue: 0
   hpSlider: {fileID: 835846413}
-  spiritSlider: {fileID: 1793244036}
+  manaSlider: {fileID: 1793244036}
 --- !u!1 &1489673342
 GameObject:
   m_ObjectHideFlags: 0
@@ -3866,10 +3866,10 @@ MonoBehaviour:
   levelText: {fileID: 290937325}
   HPText: {fileID: 660679732}
   hpValue: 0
-  spiritText: {fileID: 409718211}
-  spiritValue: 0
+  manaText: {fileID: 409718211}
+  manaValue: 0
   hpSlider: {fileID: 778960201}
-  spiritSlider: {fileID: 1285604047}
+  manaSlider: {fileID: 1285604047}
 --- !u!1 &2139823109
 GameObject:
   m_ObjectHideFlags: 0

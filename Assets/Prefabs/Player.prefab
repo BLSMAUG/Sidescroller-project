@@ -106,9 +106,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   unitName: MC
   unitLevel: 1
-  damage: 10
-  heal: 8
-  maxSpirit: 50
-  spirit: 50
-  maxHP: 25
-  currentHP: 25
+  strength: 10
+  spirit: 5
+  constitution: 4
+  maxMana: 50
+  mana: 50
+  maxHP: 100
+  currentHP: 100
+  ennemyDamage: 10

@@ -23,6 +23,11 @@ public class BattleSystem : MonoBehaviour
     public BattleHUD playerHUD;
     public BattleHUD enemyHUD;
 
+    private bool attackReady = false;
+    private bool healReady = false;
+
+    private float damage;
+
     public BattleState state;
     void Start()
     {
@@ -32,10 +37,10 @@ public class BattleSystem : MonoBehaviour
 
     private void Update()
     {
-        playerHUD.SetHPPercent(playerUnit);
-        playerHUD.SetSpiritPercent(playerUnit);
+        playerHUD.SetHUD(playerUnit);
+        playerHUD.SetHUD(playerUnit);
 
-        enemyHUD.SetHPPercent(enemyUnit);
+        enemyHUD.SetHUD(enemyUnit);
     }
 
     IEnumerator SetupBattle()
@@ -59,12 +64,22 @@ public class BattleSystem : MonoBehaviour
         PlayerTurn();
     }
 
-    IEnumerator PlayerAttack()
+    IEnumerator Shaolin_sStrike()
     {
-        bool isDead = enemyUnit.TakeDamage(playerUnit.damage);
+        damage = 15f + 0.75f * playerUnit.strength;
+
+        bool isDead = enemyUnit.TakeDamage(damage);
 
         enemyHUD.SetHP(enemyUnit.currentHP);
-        dialogueText.text = "The attack hit the enemy!";
+
+        if (playerUnit.mana < playerUnit.maxMana)
+        {
+            playerUnit.mana += 5f;
+        }
+
+        playerHUD.SetMana(playerUnit.mana);
+
+        dialogueText.text = "The enemy takes " + damage + " damage !";
 
         yield return new WaitForSeconds(2f);
         
@@ -80,13 +95,20 @@ public class BattleSystem : MonoBehaviour
         }
     }
 
-    IEnumerator PlayerHeal()
+    IEnumerator HealingMeditation()
     {
-        bool canHeal = playerUnit.Heal(playerUnit.heal);
+        bool canHeal = false;
+
+        if (playerUnit.mana > 10)
+        {
+            playerUnit.mana -= 10;
+            canHeal = playerUnit.Heal(playerUnit.mana);
+            healReady = false;
+        }
 
         if (canHeal)
         {
-            playerHUD.SetSpirit(playerUnit.spirit);
+            playerHUD.SetMana(playerUnit.mana);
             playerHUD.SetHP(playerUnit.currentHP);
 
             dialogueText.text = "You feel better!";
@@ -104,8 +126,6 @@ public class BattleSystem : MonoBehaviour
 
             dialogueText.text = "Choose an action : ";
         }
-
-        
     }
 
     
@@ -115,7 +135,7 @@ public class BattleSystem : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
 
-        bool isDead = playerUnit.TakeDamage(enemyUnit.damage);
+        bool isDead = playerUnit.TakeDamage(enemyUnit.ennemyDamage);
 
         playerHUD.SetHP(playerUnit.currentHP);
 
@@ -148,6 +168,8 @@ public class BattleSystem : MonoBehaviour
     void PlayerTurn()
     {
         dialogueText.text = "Choose an action : ";
+        attackReady = true;
+        healReady = true;
     }
 
     public void OnAttackButton()
@@ -155,7 +177,12 @@ public class BattleSystem : MonoBehaviour
         if (state != BattleState.PLAYERTURN)
             return;
 
-        StartCoroutine(PlayerAttack());
+        if (attackReady == true)
+        {
+            attackReady = false;
+            healReady = false;
+            StartCoroutine(Shaolin_sStrike());
+        }
     }
 
     public void OnHealButton()
@@ -163,6 +190,11 @@ public class BattleSystem : MonoBehaviour
         if (state != BattleState.PLAYERTURN)
             return;
 
-        StartCoroutine(PlayerHeal());
+        if (healReady == true)
+        {
+            healReady = false;
+            attackReady = false;
+            StartCoroutine(HealingMeditation());
+        }
     }
 }
