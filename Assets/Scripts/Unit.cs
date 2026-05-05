@@ -8,21 +8,25 @@ public class Unit : MonoBehaviour
     public string unitName;
     public int unitLevel;
 
-    public int damage;
-    public int heal;
-
-    public int maxSpirit;
+    public int strength;
     public int spirit;
+    public int constitution;
 
-    public int maxHP;
-    public int currentHP;
+    public float maxMana;
+    public float mana;
 
-    public bool TakeDamage(int dmg)
+    public float maxHP;
+    public float currentHP;
+
+    public float ennemyDamage;
+
+    public bool TakeDamage(float dmg)
     {
         currentHP -= dmg;
 
         if (currentHP <= 0 )
         {
+            currentHP = 0;
             return true;
         }
         else
@@ -31,21 +35,17 @@ public class Unit : MonoBehaviour
         }
     }
 
-    public bool Heal(int amount)
+    public bool Heal(float amount)
     {
-        if (spirit > 10)
+        currentHP += amount;
+        if (currentHP > maxHP)
         {
-            spirit -= 10;
-            currentHP += amount;
-            if (currentHP > maxHP)
-            {
-                currentHP = maxHP;
-            }
-            return true;
+            currentHP = maxHP;
         }
-        return false;
-        
+        return true;
     }
     
 
 }
+
+

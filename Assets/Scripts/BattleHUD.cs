@@ -9,28 +9,31 @@ public class BattleHUD : MonoBehaviour
     public Text HPText;
     public float hpValue;
 
-    public Text spiritText;
-    public float spiritValue;
+    public Text manaText;
+    public float manaValue;
 
     public Slider hpSlider;
-    public Slider spiritSlider;
+    public Slider manaSlider;
 
-    public void SetHPPercent(Unit unit)
-    {
-        hpValue = unit.currentHP * 100 / unit.maxHP;
-        HPText.text = hpValue + "%";
-    }
+    //public void SetHPPercent(Unit unit)
+    //{
+    //    hpValue = unit.currentHP * 100 / unit.maxHP;
+    //    HPText.text = hpValue + "%";
+    //}
     
-    public void SetSpiritPercent(Unit unit)
-    {
-        spiritValue = unit.spirit * 100 / unit.maxSpirit;
-        spiritText.text = spiritValue + "%";
-    }
+    //public void SetManaPercent(Unit unit)
+    //{
+    //    manaValue = unit.mana * 100 / unit.maxMana;
+    //    manaText.text = manaValue + "%";
+    //}
 
     public void SetHUD(Unit unit)
     {
-        HPText.text = hpValue + "%";
-        spiritText.text = spiritValue + "%";
+        hpValue = unit.currentHP;
+        manaValue = unit.mana;
+
+        HPText.text = hpValue + " / " + unit.maxHP;
+        manaText.text = manaValue + " / " + unit.maxMana;
 
         nameText.text = unit.unitName;
         levelText.text = "Lvl " + unit.unitLevel;
@@ -38,18 +41,18 @@ public class BattleHUD : MonoBehaviour
         hpSlider.maxValue = unit.maxHP;
         hpSlider.value = unit.currentHP;
 
-        spiritSlider.maxValue = unit.maxSpirit;
-        spiritSlider.value = unit.spirit;
+        manaSlider.maxValue = unit.maxMana;
+        manaSlider.value = unit.mana;
 
     }
 
-    public void SetHP(int hp)
+    public void SetHP(float hp)
     {
         hpSlider.value = hp;
     }
 
-    public void SetSpirit(int spirit)
+    public void SetMana(float mana)
     {
-        spiritSlider.value = spirit;
+        manaSlider.value = mana;
     }
 }
