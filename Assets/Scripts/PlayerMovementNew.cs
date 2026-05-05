@@ -38,6 +38,7 @@ public class PlayerMovementNew : MonoBehaviour
 
     void FixedUpdate()
     {
+        Debug.Log(isGrounded);
         Physics();
     }
 
@@ -61,7 +62,10 @@ public class PlayerMovementNew : MonoBehaviour
 
     public void Jump(InputAction.CallbackContext context)
     {
-        
+        if(context.performed && isGrounded)
+        {
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+        }
     }
 
     public void Dash(InputAction.CallbackContext context)

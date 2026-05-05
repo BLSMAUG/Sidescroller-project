@@ -43,13 +43,6 @@ public class Unit : MonoBehaviour
             currentHP = maxHP;
         }
         return true;
-
-        //if (mana > 10)
-        //{
-        //    mana -= 10;
-
-        //}
-        //return false;
     }
     
 
