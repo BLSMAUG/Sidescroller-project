@@ -38,14 +38,14 @@ public class PlayerMovementNew : MonoBehaviour
 
     void FixedUpdate()
     {
-        Debug.Log(isGrounded);
+        //Debug.Log(isGrounded);
         Physics();
     }
 
     public void Move(InputAction.CallbackContext context)
     {
         horizontalMovement = context.ReadValue<Vector2>().x;
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
+        
         
         if (horizontalMovement > 0)
         {
@@ -75,6 +75,7 @@ public class PlayerMovementNew : MonoBehaviour
 
     void Physics()
     {
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
         float targetSpeed = horizontalMovement * moveSpeed;
         float acceleration = isGrounded ? groundAcceleration : airAcceleration;
         float newX = Mathf.Lerp(rb.linearVelocity.x, targetSpeed, acceleration * Time.fixedDeltaTime);
