@@ -1260,7 +1260,7 @@ MonoBehaviour:
   groundCheckRadius: 0.02
   groundLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   dashForce: 15
   dashDuration: 0.15
   dashCooldown: 5

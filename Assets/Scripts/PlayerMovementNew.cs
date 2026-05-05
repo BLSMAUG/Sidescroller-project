@@ -31,7 +31,7 @@ public class PlayerMovementNew : MonoBehaviour
 
     public GameObject bulleInterraction;
 
-    void Start()
+    void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
     }
