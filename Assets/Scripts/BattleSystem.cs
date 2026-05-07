@@ -49,7 +49,7 @@ public class BattleSystem : MonoBehaviour
     private bool enemy1Dead = false;
     private bool enemy2Dead = false;
     private bool waveDone = false;
-    private bool bossDead = false;
+    //private bool bossDead = false;
     private bool wave = false;
     private bool boss = false;
 
@@ -77,8 +77,7 @@ public class BattleSystem : MonoBehaviour
             enemy1HUD.SetHUD(enemyUnit1);
             enemy2HUD.SetHUD(enemyUnit2);
         }
-        
-        if (boss)
+        else if (boss)
         {
             bossHUD.SetHUD(bossUnit);
         }
@@ -119,7 +118,7 @@ public class BattleSystem : MonoBehaviour
         yield return new WaitForSeconds(2f);
 
         state = BattleState.PLAYERTURN;
-        PlayerTurn();
+        StartCoroutine(PlayerTurn());
     }
 
     #region PLAYER_ABILITIES
@@ -134,32 +133,43 @@ public class BattleSystem : MonoBehaviour
             playerUnit.mana += 5f;
         }
 
-        dialogueText.text = "The enemy takes " + damage + " damage !";
+        dialogueText.text = "The enemy takes " + damage * playerAttackDebuff + " damage !";
 
         yield return new WaitForSeconds(1.5f);
         
         if (isDead)
         {
-            if (enemyCount == 0)
+            if (wave && enemyCount == 0)
             {
                 state = BattleState.WAVEDONE;
                 StartCoroutine(EndBattle());
             }
-            if (bossDead)
+            else if (boss)
             {
                 state = BattleState.WON;
                 StartCoroutine(EndBattle());
             }
             else
             {
-                state = BattleState.ENEMYTURN;
-                StartCoroutine(EnemyTurn());
+                if (wave)
+                {
+                    state = BattleState.ENEMYTURN;
+                    StartCoroutine(EnemyTurn());
+                }
             }
         }
         else
         {
-            state = BattleState.ENEMYTURN;
-            StartCoroutine(EnemyTurn());
+            if (wave)
+            {
+                state = BattleState.ENEMYTURN;
+                StartCoroutine(EnemyTurn());
+            }
+            else if (boss)
+            {
+                state = BattleState.BOSSTURN;
+                StartCoroutine(BossTurn());
+            }
         }
     }
 
@@ -174,7 +184,7 @@ public class BattleSystem : MonoBehaviour
         isDead = unit.TakeDamage(damage * playerAttackDebuff);
         hitCount += 1;
 
-        dialogueText.text = "The enemy takes " + damage + " damage !";
+        dialogueText.text = "The enemy takes " + damage * playerAttackDebuff + " damage !";
 
         if (isDead)
         {
@@ -182,37 +192,64 @@ public class BattleSystem : MonoBehaviour
             {
                 playerUnit.mana += 15;
             }
-            if (enemyCount == 0)
+            if (wave && enemyCount == 0)
             {
                 yield return new WaitForSeconds(1.5f);
                 state = BattleState.WAVEDONE;
                 StartCoroutine(EndBattle());
             }
+            else if (boss)
+            {
+                state = BattleState.WON;
+                StartCoroutine(EndBattle());
+            }
             else
+            {
+                if (wave)
+                {
+                    yield return new WaitForSeconds(1.5f);
+                    state = BattleState.ENEMYTURN;
+                    StartCoroutine(EnemyTurn());
+                }
+            }
+        }
+        else
+        {
+            if (wave)
             {
                 yield return new WaitForSeconds(1.5f);
                 state = BattleState.ENEMYTURN;
                 StartCoroutine(EnemyTurn());
             }
-        }
-        else
-        {
-            yield return new WaitForSeconds(1.5f);
-            state = BattleState.ENEMYTURN;
-            StartCoroutine(EnemyTurn());
+            else if (boss)
+            {
+                yield return new WaitForSeconds(1.5f);
+                state = BattleState.BOSSTURN;
+                StartCoroutine(BossTurn());
+            }
         }
     }
 
-    IEnumerator SpiritualWave (Unit unit1, Unit unit2)
+    IEnumerator SpiritualWave ()
     {
         bool isDead = false;
 
         damage = 25 + 2.5f * playerUnit.spirit;
 
-        isDead = unit1.TakeDamage(damage * playerAttackDebuff);
-        isDead = unit2.TakeDamage(damage * playerAttackDebuff);
+        if (wave)
+        {
+            isDead = enemyUnit1.TakeDamage(damage * playerAttackDebuff);
+            isDead = enemyUnit2.TakeDamage(damage * playerAttackDebuff);
 
-        dialogueText.text = "The enemies take " + damage + " damage !";
+            dialogueText.text = "The enemies take " + damage * playerAttackDebuff + " damage !";
+        }
+
+        else if (boss)
+        {
+            isDead = bossUnit.TakeDamage(damage * playerAttackDebuff);
+
+            dialogueText.text = "The Boss takes " + damage * playerAttackDebuff + " damage !";
+        }
 
         yield return null;
         playerUnit.mana -= 20;
@@ -220,21 +257,37 @@ public class BattleSystem : MonoBehaviour
 
         if (isDead)
         {
-            if (enemyCount == 0)
+            if (wave && enemyCount == 0)
             {
                 state = BattleState.WAVEDONE;
                 StartCoroutine(EndBattle());
             }
+            else if (boss)
+            {
+                state = BattleState.WON;
+                StartCoroutine(EndBattle());
+            }
             else
             {
-                state = BattleState.ENEMYTURN;
-                StartCoroutine(EnemyTurn());
+                if (wave)
+                {
+                    state = BattleState.ENEMYTURN;
+                    StartCoroutine(EnemyTurn());
+                }
             }
         }
         else
         {
-            state = BattleState.ENEMYTURN;
-            StartCoroutine(EnemyTurn());
+            if (wave)
+            {
+                state = BattleState.ENEMYTURN;
+                StartCoroutine(EnemyTurn());
+            }
+            else if (boss)
+            {
+                state = BattleState.BOSSTURN;
+                StartCoroutine(BossTurn());
+            }
         }
     }
 
@@ -260,8 +313,16 @@ public class BattleSystem : MonoBehaviour
             playerAttackDebuff = 1f;
             playerDefenseDebuff = 1f;
             
-            state = BattleState.ENEMYTURN;
-            StartCoroutine(EnemyTurn());
+            if (wave)
+            {
+                state = BattleState.ENEMYTURN;
+                StartCoroutine(EnemyTurn());
+            }
+            if (boss)
+            {
+                state = BattleState.BOSSTURN;
+                StartCoroutine(BossTurn());
+            }
         }
     }
 
@@ -273,11 +334,11 @@ public class BattleSystem : MonoBehaviour
 
         if (enemyCount >= 2)
         {
-            dialogueText.text = "The enemies attack you for " + enemyUnit1.ennemyDamage + " x " + enemyCount + " damage!";
+            dialogueText.text = "The enemies attack you for " + enemyUnit1.ennemyDamage * playerDefenseDebuff + " x " + enemyCount + " damage!";
         }
         else
         {
-            dialogueText.text = "The enemy attacks you for " + enemyUnit1.ennemyDamage + " damage!";
+            dialogueText.text = "The enemy attacks you for " + enemyUnit1.ennemyDamage * playerDefenseDebuff + " damage!";
         }
 
         yield return new WaitForSeconds(1f);
@@ -294,7 +355,7 @@ public class BattleSystem : MonoBehaviour
         else
         {
             state = BattleState.PLAYERTURN;
-            PlayerTurn();
+            StartCoroutine(PlayerTurn());
         }
     }
 
@@ -303,9 +364,9 @@ public class BattleSystem : MonoBehaviour
         bool isDead = false;
         if (bossAttackCount == 0)
         {
-            dialogueText.text = "The Boss attacks you for " + bossUnit.ennemyDamage + " damage!";
+            dialogueText.text = "The Boss attacks you for " + bossUnit.ennemyDamage * playerDefenseDebuff + " damage!";
             isDead = playerUnit.TakeDamage(bossUnit.ennemyDamage * playerDefenseDebuff);
-            
+            yield return new WaitForSeconds(1.5f);
 
             if (isDead)
             {
@@ -316,17 +377,18 @@ public class BattleSystem : MonoBehaviour
             {
                 bossAttackCount += 1;
                 state = BattleState.PLAYERTURN;
-                PlayerTurn();
+                StartCoroutine(PlayerTurn());
             }
         }
 
-        if (bossAttackCount == 1)
+        else if (bossAttackCount == 1)
         {
-            dialogueText.text = "The Boss attacks you for " + bossUnit.ennemyDamage + " damage!";
+            dialogueText.text = "The Boss attacks you for " + bossUnit.ennemyDamage * playerDefenseDebuff+ " damage!";
             isDead = playerUnit.TakeDamage(bossUnit.ennemyDamage * playerDefenseDebuff);
             
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(1.5f);
             dialogueText.text = "You have a bad feeling ...";
+            yield return new WaitForSeconds(1.5f);
 
             if (isDead)
             {
@@ -337,18 +399,19 @@ public class BattleSystem : MonoBehaviour
             {
                 bossAttackCount += 1;
                 state = BattleState.PLAYERTURN;
-                PlayerTurn();
+                StartCoroutine(PlayerTurn());
             }
         }
 
-        if (bossAttackCount == 2)
+        else if (bossAttackCount == 2)
         {
             dialogueText.text = "The Boss starts making up lies to destabilize you!";
             yield return new WaitForSeconds(1.5f);
             playerDefenseDebuff = 1.5f;
             playerAttackDebuff = 0.5f;
             dialogueText.text = "You feel weak.";
-            yield return new WaitForSeconds(1f);
+            isDead = playerUnit.TakeDamage(0);
+            yield return new WaitForSeconds(1.5f);
             
 
             if (isDead)
@@ -360,7 +423,7 @@ public class BattleSystem : MonoBehaviour
             {
                 bossAttackCount = 0;
                 state = BattleState.PLAYERTURN;
-                PlayerTurn();
+                StartCoroutine(PlayerTurn());
             }
         }
     }
@@ -397,28 +460,30 @@ public class BattleSystem : MonoBehaviour
 
             state = BattleState.PLAYERTURN;
             bossAttackCount = 0;
-            PlayerTurn();
+            StartCoroutine(PlayerTurn());
         }
 
-        if (state == BattleState.WON)
+        else if (state == BattleState.WON)
         {
             dialogueText.text = "You have defeated the Boss!";
             yield return new WaitForSeconds(1.5f);
             bossBattleStationGO.SetActive(false);
+            bossHudGO.SetActive(false);
             dialogueText.text = "Congratulations, you have cleared this area of it's evil influence.";
             yield return new WaitForSeconds(1.5f);
             //changement de scène ou panel d'UI -> level up + nouvelle compétence de déplacement
         }
 
-        if (state == BattleState.LOST)
+        else if (state == BattleState.LOST)
         {
             dialogueText.text = "You were defeated.";
         }
     }
 
-    void PlayerTurn()
+    IEnumerator PlayerTurn()
     {
         EnemyStatusChecker();
+        yield return null;
         dialogueText.text = "Choose an action : ";
         attackReady = true;
         healReady = true;
@@ -505,7 +570,7 @@ public class BattleSystem : MonoBehaviour
 
         if (attackReady == true && playerUnit.mana >= 20)
         {
-            StartCoroutine(SpiritualWave(enemyUnit1, enemyUnit2));
+            StartCoroutine(SpiritualWave());
             attackReady = false;
             healReady = false;
         }
