@@ -28,6 +28,8 @@ public class PlayerMovementNew : MonoBehaviour
     private bool dashRequested;
     private float dashTimer;
     private float cooldownTimer;
+    public float coyoteTimer;
+    public float lagJumpTimer;
 
     public GameObject bulleInterraction;
 
@@ -66,6 +68,10 @@ public class PlayerMovementNew : MonoBehaviour
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
         }
+        else if (context.performed && !isGrounded)
+        {
+            lagJumpTimer = 0.100f;
+        }
     }
 
     public void Dash(InputAction.CallbackContext context)
@@ -81,7 +87,31 @@ public class PlayerMovementNew : MonoBehaviour
         float newX = Mathf.Lerp(rb.linearVelocity.x, targetSpeed, acceleration * Time.fixedDeltaTime);
         rb.linearVelocity = new Vector2(newX, rb.linearVelocity.y);
 
-        // dash
+        if (coyoteTimer > 0)
+        {
+            coyoteTimer -= Time.deltaTime;
+            isGrounded = true;
+            if (coyoteTimer <= 0)
+            {
+                isGrounded = false;
+                coyoteTimer = 0;
+            }
+        }
+
+        if (lagJumpTimer > 0)
+        {
+            lagJumpTimer -= Time.deltaTime;
+            if (isGrounded)
+            {
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+                lagJumpTimer = 0;
+            }
+            if (lagJumpTimer <= 0)
+            {
+                lagJumpTimer = 0;
+            }
+        }
+
         if (dashRequested)
         {
             isDashing = true;
@@ -101,8 +131,15 @@ public class PlayerMovementNew : MonoBehaviour
             return;
         }
 
-        // cooldown dash
         if (cooldownTimer > 0f)
             cooldownTimer -= Time.fixedDeltaTime;
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground") && rb.linearVelocity.y < 0)
+        {
+            coyoteTimer = 0.075f;
+        }
     }
 }
