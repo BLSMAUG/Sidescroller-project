@@ -5,11 +5,16 @@ using UnityEngine.SceneManagement;
 public class GlobalHelper : MonoBehaviour
 {
     public GameObject SettingsMenuGO;
-
+    public GameObject ExitConfirmGO;
 
     void Start()
     {
         SettingsMenuGO.SetActive(false);
+
+        if (SceneManager.GetActiveScene().name == "Combat")
+        {
+            ExitConfirmGO.SetActive(false);
+        }
     }
 
     public void OnPlayButton()
@@ -19,7 +24,14 @@ public class GlobalHelper : MonoBehaviour
 
     public void OnSettingsButton()
     {
-        SettingsMenuGO.SetActive(true);
+        if (SceneManager.GetActiveScene().name == "TitleScreen")
+        {
+            SettingsMenuGO.SetActive(true);
+        }
+        else if (SceneManager.GetActiveScene().name == "Combat" && BattleSystem.isChoosingMove == true)
+        {
+            SettingsMenuGO.SetActive(true);
+        }
     }
 
     public void OnResumeButton()
@@ -34,7 +46,24 @@ public class GlobalHelper : MonoBehaviour
 
     public void OnMainMenuButton()
     {
+        if (SceneManager.GetActiveScene().name == "SampleScene")
+        {
+            SceneManager.LoadScene(0);
+        }
+        else if (SceneManager.GetActiveScene().name == "Combat")
+        {
+            ExitConfirmGO.SetActive(true);
+        }
+    }
+
+    public void OnExitConfirmButton()
+    {
         SceneManager.LoadScene(0);
+    }
+
+    public void OnExitDenyButton()
+    {
+        ExitConfirmGO.SetActive(false);
     }
 
     public void PauseMenu(InputAction.CallbackContext context)

@@ -52,6 +52,7 @@ public class BattleSystem : MonoBehaviour
     //private bool bossDead = false;
     private bool wave = false;
     private bool boss = false;
+    public static bool isChoosingMove = false;
 
     private float damage;
     private int hitCount;
@@ -487,6 +488,7 @@ public class BattleSystem : MonoBehaviour
         dialogueText.text = "Choose an action : ";
         attackReady = true;
         healReady = true;
+        isChoosingMove = true;
     }
 
     IEnumerator NoManaText(int mana)
@@ -526,6 +528,7 @@ public class BattleSystem : MonoBehaviour
             attackReady = false;
             healReady = false;
             selectionDone = false;
+            isChoosingMove = false;
 
             if (wave)
             {
@@ -550,6 +553,7 @@ public class BattleSystem : MonoBehaviour
             healReady = false;
             selectionDone = false;
             isB_Wrath = true;
+            isChoosingMove = false;
 
             if (wave)
             {
@@ -573,6 +577,7 @@ public class BattleSystem : MonoBehaviour
             StartCoroutine(SpiritualWave());
             attackReady = false;
             healReady = false;
+            isChoosingMove = false;
         }
     }
 
@@ -627,6 +632,7 @@ public class BattleSystem : MonoBehaviour
         {
             healReady = false;
             attackReady = false;
+            isChoosingMove = false;
             StartCoroutine(HealingMeditation());
         }
     }
