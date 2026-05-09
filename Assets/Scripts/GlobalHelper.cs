@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class GlobalHelper : MonoBehaviour
@@ -29,5 +30,18 @@ public class GlobalHelper : MonoBehaviour
     public void OnQuitButton()
     {
         Application.Quit();
+    }
+
+    public void OnMainMenuButton()
+    {
+        SceneManager.LoadScene(0);
+    }
+
+    public void PauseMenu(InputAction.CallbackContext context)
+    {
+        if (SceneManager.GetActiveScene().name == "SampleScene")
+        {
+            SettingsMenuGO.SetActive(true);
+        }
     }
 }
