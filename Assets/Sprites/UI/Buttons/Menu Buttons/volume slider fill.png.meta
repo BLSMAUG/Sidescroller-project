@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 90ed338a3c53a65488f399968e44f138
+guid: e31ce34ed32a33b4b928059176499b40
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2641894523120030478
-    second: title screen_0
+      213: -7668611417899051178
+    second: volume slider fill_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -72,7 +72,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 16384
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: title screen_0
+      name: volume slider fill_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 480
-        height: 270
+        x: 2
+        y: 2
+        width: 302
+        height: 42
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e039e984215e9a420800000000000000
-      internalID: 2641894523120030478
+      spriteID: 6575f93ab8e939590800000000000000
+      internalID: -7668611417899051178
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      title screen_0: 2641894523120030478
+      volume slider fill_0: -7668611417899051178
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

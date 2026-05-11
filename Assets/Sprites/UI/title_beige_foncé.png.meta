@@ -1,0 +1,429 @@
+fileFormatVersion: 2
+guid: dea3519c8f93f174596adaf11b5d8598
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6212119687600084538
+    second: "title_beige_fonc\xE9_0"
+  - first:
+      213: 7359279321049851587
+    second: "title_beige_fonc\xE9_1"
+  - first:
+      213: -2753957836548868460
+    second: "title_beige_fonc\xE9_2"
+  - first:
+      213: -3422590438939516548
+    second: "title_beige_fonc\xE9_3"
+  - first:
+      213: -6304787988763920839
+    second: "title_beige_fonc\xE9_4"
+  - first:
+      213: 3213477104974556082
+    second: "title_beige_fonc\xE9_5"
+  - first:
+      213: -4937834257043815287
+    second: "title_beige_fonc\xE9_6"
+  - first:
+      213: -1016538756625566412
+    second: "title_beige_fonc\xE9_7"
+  - first:
+      213: -2822026274674983237
+    second: "title_beige_fonc\xE9_8"
+  - first:
+      213: -7005358410865437092
+    second: "title_beige_fonc\xE9_9"
+  - first:
+      213: -905167392071777179
+    second: "title_beige_fonc\xE9_10"
+  - first:
+      213: 420071184056237763
+    second: "title_beige_fonc\xE9_11"
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: "title_beige_fonc\xE9_0"
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 71
+        width: 86
+        height: 116
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a361d9151f1e53650800000000000000
+      internalID: 6212119687600084538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "title_beige_fonc\xE9_1"
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 81
+        width: 66
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c6ed062d89612660800000000000000
+      internalID: 7359279321049851587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "title_beige_fonc\xE9_2"
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 81
+        width: 66
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 496f91250f9f7c9d0800000000000000
+      internalID: -2753957836548868460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "title_beige_fonc\xE9_3"
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 151
+        width: 27
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c71ac5321248080d0800000000000000
+      internalID: -3422590438939516548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "title_beige_fonc\xE9_4"
+      rect:
+        serializedVersion: 2
+        x: 331
+        y: 71
+        width: 77
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 936b3997ab4e088a0800000000000000
+      internalID: -6304787988763920839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "title_beige_fonc\xE9_5"
+      rect:
+        serializedVersion: 2
+        x: 411
+        y: 41
+        width: 87
+        height: 137
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2bbebd7b660989c20800000000000000
+      internalID: 3213477104974556082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "title_beige_fonc\xE9_6"
+      rect:
+        serializedVersion: 2
+        x: 552
+        y: 151
+        width: 27
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 984062da7e9497bb0800000000000000
+      internalID: -4937834257043815287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "title_beige_fonc\xE9_7"
+      rect:
+        serializedVersion: 2
+        x: 593
+        y: 71
+        width: 58
+        height: 117
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4357aeef26784e1f0800000000000000
+      internalID: -1016538756625566412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "title_beige_fonc\xE9_8"
+      rect:
+        serializedVersion: 2
+        x: 705
+        y: 111
+        width: 37
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bbebd2f0e0626d8d0800000000000000
+      internalID: -2822026274674983237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "title_beige_fonc\xE9_9"
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 71
+        width: 37
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c56121c24a7f7ce90800000000000000
+      internalID: -7005358410865437092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "title_beige_fonc\xE9_10"
+      rect:
+        serializedVersion: 2
+        x: 552
+        y: 71
+        width: 37
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5648b4d7d033073f0800000000000000
+      internalID: -905167392071777179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "title_beige_fonc\xE9_11"
+      rect:
+        serializedVersion: 2
+        x: 705
+        y: 81
+        width: 27
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3cebc0a248464d500800000000000000
+      internalID: 420071184056237763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      "title_beige_fonc\xE9_0": 6212119687600084538
+      "title_beige_fonc\xE9_1": 7359279321049851587
+      "title_beige_fonc\xE9_10": -905167392071777179
+      "title_beige_fonc\xE9_11": 420071184056237763
+      "title_beige_fonc\xE9_2": -2753957836548868460
+      "title_beige_fonc\xE9_3": -3422590438939516548
+      "title_beige_fonc\xE9_4": -6304787988763920839
+      "title_beige_fonc\xE9_5": 3213477104974556082
+      "title_beige_fonc\xE9_6": -4937834257043815287
+      "title_beige_fonc\xE9_7": -1016538756625566412
+      "title_beige_fonc\xE9_8": -2822026274674983237
+      "title_beige_fonc\xE9_9": -7005358410865437092
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
