@@ -9,6 +9,8 @@ public class Chest : ObjectInteraction
 
     InputAction interactAction;
 
+    Unit playerUnit;
+
     void Start()
     {
         //ChestId ??= GlobalHelper.GenerateUniqueId(gameObject);
@@ -37,7 +39,7 @@ public class Chest : ObjectInteraction
         if (IsOpened = opened)
         {
             GetComponent<SpriteRenderer>().sprite = openedSprite;
-            
+            playerUnit.unitLevel += 1;
         }
         isInteractable = false;
     }

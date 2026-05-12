@@ -1,3 +1,4 @@
+using System.IO;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -6,19 +7,85 @@ public class GlobalHelper : MonoBehaviour
 {
     public GameObject SettingsMenuGO;
     public GameObject ExitConfirmGO;
+    public GameObject NewGameButtonGO;
+    public GameObject NewGameButtonMaskGO;
+
+    public GameObject PlayerSpawnPointGO;
+    public GameObject playerPrefab;
+
+    private bool baseDataSaved = false;
+    private bool newGame = false;
 
     void Start()
     {
         SettingsMenuGO.SetActive(false);
 
+        if (SceneManager.GetActiveScene().name == "TitleScreen")
+        {
+            NewGameMask();
+        }
+
+        if (SceneManager.GetActiveScene().name == "SampleScene")
+        {
+            if (baseDataSaved == true && newGame == false)
+            {
+                GameObject playerGO = Instantiate(playerPrefab, PlayerSpawnPointGO.transform);
+                Unit.instance.LoadPlayer();
+            }
+            else if (baseDataSaved == true && newGame == true)
+            {
+                GameObject playerGO = Instantiate(playerPrefab, PlayerSpawnPointGO.transform);
+                Unit.instance.LoadBasePlayer();
+                newGame = false;
+            }
+            else if (baseDataSaved == false)
+            {
+                GameObject playerGO = Instantiate(playerPrefab, PlayerSpawnPointGO.transform);
+                Unit.instance.SaveBasePlayer();
+                baseDataSaved = true;
+            }
+
+            PlayerMovementNew.instance.GetComponent<CapsuleCollider2D>().enabled = true;
+            PlayerMovementNew.instance.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+            PlayerMovementNew.instance.GetComponent<PlayerMovementNew>().enabled = true;
+            PlayerMovementNew.instance.GetComponent<Transform>().localScale = new Vector3(1, 1, 1);
+
+        }
+
         if (SceneManager.GetActiveScene().name == "Combat")
         {
             ExitConfirmGO.SetActive(false);
+            PlayerMovementNew.instance.GetComponent<CapsuleCollider2D>().enabled = false;
+            PlayerMovementNew.instance.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+            PlayerMovementNew.instance.GetComponent<PlayerMovementNew>().enabled = false;
+            PlayerMovementNew.instance.GetComponent<Transform>().localScale = new Vector3(0.55f, 0.55f, 0.55f);
         }
+
     }
 
     public void OnPlayButton()
     {
+        SceneManager.LoadScene(1);
+    }
+
+
+    public void NewGameMask()
+    {
+        if (baseDataSaved == false)
+        {
+            Debug.Log("yo");
+            NewGameButtonGO.SetActive(false);
+            NewGameButtonMaskGO.SetActive(true);
+        }
+        else
+        {
+            NewGameButtonGO.SetActive(true);
+            NewGameButtonMaskGO.SetActive(false);
+        }
+    }
+    public void OnNewGameButton()
+    {
+        newGame = true;
         SceneManager.LoadScene(1);
     }
 
