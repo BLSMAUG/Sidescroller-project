@@ -15,6 +15,8 @@ public static class SaveBaseData
 
         formatter.Serialize(stream, data);
         stream.Close();
+        Debug.Log(path);
+        Debug.Log("c");
     }
 
     public static PlayerBaseData LoadPlayer()

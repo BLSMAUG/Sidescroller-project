@@ -927,7 +927,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 106d70421f4bf82469363ce70295dc07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraGround
-  player: {fileID: 5174817392027629893, guid: c195c427fa566c440aab2cf3d2c92d2d, type: 3}
   smoothSpeed: 0.3
 --- !u!1 &522751319
 GameObject:

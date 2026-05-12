@@ -30,18 +30,28 @@ public class GlobalHelper : MonoBehaviour
             if (baseDataSaved == true && newGame == false)
             {
                 GameObject playerGO = Instantiate(playerPrefab, PlayerSpawnPointGO.transform);
+                CameraGround.FindPlayer();
+                Chest.FindPlayer();
                 Unit.instance.LoadPlayer();
             }
             else if (baseDataSaved == true && newGame == true)
             {
                 GameObject playerGO = Instantiate(playerPrefab, PlayerSpawnPointGO.transform);
+                CameraGround.FindPlayer();
+                Chest.FindPlayer();
                 Unit.instance.LoadBasePlayer();
                 newGame = false;
             }
             else if (baseDataSaved == false)
             {
+                Debug.Log("1");
                 GameObject playerGO = Instantiate(playerPrefab, PlayerSpawnPointGO.transform);
+                CameraGround.FindPlayer();
+                Chest.FindPlayer();
+                Debug.Log("2");
                 Unit.instance.SaveBasePlayer();
+                Unit.instance.SavePlayer();
+                Debug.Log("3");
                 baseDataSaved = true;
             }
 

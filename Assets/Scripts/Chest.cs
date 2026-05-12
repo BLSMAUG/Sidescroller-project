@@ -9,11 +9,10 @@ public class Chest : ObjectInteraction
 
     InputAction interactAction;
 
-    Unit playerUnit;
+    static Unit playerUnit;
 
     void Start()
     {
-        //ChestId ??= GlobalHelper.GenerateUniqueId(gameObject);
         interactAction = InputSystem.actions.FindAction("Interact");
     }
 
@@ -44,6 +43,9 @@ public class Chest : ObjectInteraction
         isInteractable = false;
     }
 
-
+    public static void FindPlayer()
+    {
+        playerUnit = PlayerMovementNew.instance.GetComponent<Unit>();
+    }
 
 }
