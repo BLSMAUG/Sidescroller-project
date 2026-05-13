@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovementNew : MonoBehaviour
 {
@@ -46,6 +47,52 @@ public class PlayerMovementNew : MonoBehaviour
         //Debug.Log(isGrounded);
         Physics();
     }
+
+    #region Menu
+
+    public GameObject SettingsMenuGO;
+    public GameObject ExitConfirmGO;
+    public void PauseMenu(InputAction.CallbackContext context)
+    {
+        if (SceneManager.GetActiveScene().name == "SampleScene")
+        {
+            SettingsMenuGO.SetActive(true);
+        }
+    }
+
+    public void OnResumeButton()
+    {
+        SettingsMenuGO.SetActive(false);
+    }
+
+    public void OnQuitButton()
+    {
+        Application.Quit();
+    }
+
+    public void OnMainMenuButton()
+    {
+        if (SceneManager.GetActiveScene().name == "SampleScene")
+        {
+            SceneManager.LoadScene(0);
+        }
+        else if (SceneManager.GetActiveScene().name == "Combat")
+        {
+            ExitConfirmGO.SetActive(true);
+        }
+    }
+
+    public void OnExitConfirmButton()
+    {
+        SceneManager.LoadScene(0);
+    }
+
+    public void OnExitDenyButton()
+    {
+        ExitConfirmGO.SetActive(false);
+    }
+
+    #endregion
 
     public void Move(InputAction.CallbackContext context)
     {

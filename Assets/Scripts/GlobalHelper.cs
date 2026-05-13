@@ -13,15 +13,24 @@ public class GlobalHelper : MonoBehaviour
     public GameObject PlayerSpawnPointGO;
     public GameObject playerPrefab;
 
-    private bool baseDataSaved = false;
-    private bool newGame = false;
+    public bool baseDataSaved = false;
+    public bool newGame = false;
 
+    //public static GlobalHelper instance;
+    public GlobalHelperDataV2 save;
+
+    private void Awake()
+    {
+        //instance = this;
+    }
     void Start()
     {
         SettingsMenuGO.SetActive(false);
 
         if (SceneManager.GetActiveScene().name == "TitleScreen")
         {
+            //instance.LoadHelper();
+            save = SaveGlobalHelperDataV2.Load();
             NewGameMask();
         }
 
@@ -51,8 +60,11 @@ public class GlobalHelper : MonoBehaviour
                 Debug.Log("2");
                 Unit.instance.SaveBasePlayer();
                 Unit.instance.SavePlayer();
-                Debug.Log("3");
                 baseDataSaved = true;
+                //instance.SaveHelper();
+                SaveGlobalHelperDataV2.Save(save);
+                Debug.Log("3");
+                
             }
 
             PlayerMovementNew.instance.GetComponent<CapsuleCollider2D>().enabled = true;
@@ -68,9 +80,22 @@ public class GlobalHelper : MonoBehaviour
             PlayerMovementNew.instance.GetComponent<CapsuleCollider2D>().enabled = false;
             PlayerMovementNew.instance.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
             PlayerMovementNew.instance.GetComponent<PlayerMovementNew>().enabled = false;
-            PlayerMovementNew.instance.GetComponent<Transform>().localScale = new Vector3(0.55f, 0.55f, 0.55f);
+            PlayerMovementNew.instance.GetComponent<Transform>().localScale = new Vector3(0.65f, 0.55f, 1f);
         }
 
+    }
+
+
+    public void SaveHelper()
+    {
+        SaveGlobalHelperData.SaveHelperData(this);
+    }
+
+    public void LoadHelper()
+    {
+        GlobalHelperData data = SaveGlobalHelperData.LoadHelper();
+
+        baseDataSaved = data.baseDataSaved;
     }
 
     public void OnPlayButton()
@@ -87,7 +112,7 @@ public class GlobalHelper : MonoBehaviour
             NewGameButtonGO.SetActive(false);
             NewGameButtonMaskGO.SetActive(true);
         }
-        else
+        else if (baseDataSaved == true)
         {
             NewGameButtonGO.SetActive(true);
             NewGameButtonMaskGO.SetActive(false);
@@ -143,11 +168,4 @@ public class GlobalHelper : MonoBehaviour
         ExitConfirmGO.SetActive(false);
     }
 
-    public void PauseMenu(InputAction.CallbackContext context)
-    {
-        if (SceneManager.GetActiveScene().name == "SampleScene")
-        {
-            SettingsMenuGO.SetActive(true);
-        }
-    }
 }

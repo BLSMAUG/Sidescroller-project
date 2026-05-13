@@ -8059,6 +8059,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GlobalHelper
   SettingsMenuGO: {fileID: 1895951480}
   ExitConfirmGO: {fileID: 1871879709}
+  NewGameButtonGO: {fileID: 0}
+  NewGameButtonMaskGO: {fileID: 0}
+  PlayerSpawnPointGO: {fileID: 0}
+  playerPrefab: {fileID: 0}
 --- !u!4 &1632053236
 Transform:
   m_ObjectHideFlags: 0
