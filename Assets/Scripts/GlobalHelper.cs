@@ -7,65 +7,69 @@ public class GlobalHelper : MonoBehaviour
 {
     public GameObject SettingsMenuGO;
     public GameObject ExitConfirmGO;
-    public GameObject NewGameButtonGO;
-    public GameObject NewGameButtonMaskGO;
+    //public GameObject NewGameButtonGO;
+    //public GameObject NewGameButtonMaskGO;
 
     public GameObject PlayerSpawnPointGO;
     public GameObject playerPrefab;
 
-    public bool baseDataSaved = false;
-    public bool newGame = false;
+    //public bool baseDataSaved = false;
+    //public bool newGame = false;
 
     //public static GlobalHelper instance;
-    public GlobalHelperDataV2 save;
+    //public GlobalHelperDataV2 save;
 
-    private void Awake()
-    {
-        //instance = this;
-    }
+    //private void Awake()
+    //{
+    //    //instance = this;
+    //}
     void Start()
     {
         SettingsMenuGO.SetActive(false);
 
-        if (SceneManager.GetActiveScene().name == "TitleScreen")
-        {
-            //instance.LoadHelper();
-            save = SaveGlobalHelperDataV2.Load();
-            NewGameMask();
-        }
+        //if (SceneManager.GetActiveScene().name == "TitleScreen")
+        //{
+        //    //instance.LoadHelper();
+        //    //save = SaveGlobalHelperDataV2.Load();
+        //    //NewGameMask();
+        //}
 
         if (SceneManager.GetActiveScene().name == "SampleScene")
         {
-            if (baseDataSaved == true && newGame == false)
-            {
-                GameObject playerGO = Instantiate(playerPrefab, PlayerSpawnPointGO.transform);
-                CameraGround.FindPlayer();
-                Chest.FindPlayer();
-                Unit.instance.LoadPlayer();
-            }
-            else if (baseDataSaved == true && newGame == true)
-            {
-                GameObject playerGO = Instantiate(playerPrefab, PlayerSpawnPointGO.transform);
-                CameraGround.FindPlayer();
-                Chest.FindPlayer();
-                Unit.instance.LoadBasePlayer();
-                newGame = false;
-            }
-            else if (baseDataSaved == false)
-            {
-                Debug.Log("1");
-                GameObject playerGO = Instantiate(playerPrefab, PlayerSpawnPointGO.transform);
-                CameraGround.FindPlayer();
-                Chest.FindPlayer();
-                Debug.Log("2");
-                Unit.instance.SaveBasePlayer();
-                Unit.instance.SavePlayer();
-                baseDataSaved = true;
-                //instance.SaveHelper();
-                SaveGlobalHelperDataV2.Save(save);
-                Debug.Log("3");
+            GameObject playerGO = Instantiate(playerPrefab, PlayerSpawnPointGO.transform);
+            CameraGround.FindPlayer();
+            Chest.FindPlayer();
+
+            //if (baseDataSaved == true && newGame == false)
+            //{
+            //    GameObject playerGO = Instantiate(playerPrefab, PlayerSpawnPointGO.transform);
+            //    CameraGround.FindPlayer();
+            //    Chest.FindPlayer();
+            //    Unit.instance.LoadPlayer();
+            //}
+            //else if (baseDataSaved == true && newGame == true)
+            //{
+            //    GameObject playerGO = Instantiate(playerPrefab, PlayerSpawnPointGO.transform);
+            //    CameraGround.FindPlayer();
+            //    Chest.FindPlayer();
+            //    Unit.instance.LoadBasePlayer();
+            //    newGame = false;
+            //}
+            //else if (baseDataSaved == false)
+            //{
+            //    Debug.Log("1");
+            //    GameObject playerGO = Instantiate(playerPrefab, PlayerSpawnPointGO.transform);
+            //    CameraGround.FindPlayer();
+            //    Chest.FindPlayer();
+            //    Debug.Log("2");
+            //    Unit.instance.SaveBasePlayer();
+            //    Unit.instance.SavePlayer();
+            //    baseDataSaved = true;
+            //    //instance.SaveHelper();
+            //    SaveGlobalHelperDataV2.Save(save);
+            //    Debug.Log("3");
                 
-            }
+            //}
 
             PlayerMovementNew.instance.GetComponent<CapsuleCollider2D>().enabled = true;
             PlayerMovementNew.instance.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
@@ -86,17 +90,17 @@ public class GlobalHelper : MonoBehaviour
     }
 
 
-    public void SaveHelper()
-    {
-        SaveGlobalHelperData.SaveHelperData(this);
-    }
+    //public void SaveHelper()
+    //{
+    //    SaveGlobalHelperData.SaveHelperData(this);
+    //}
 
-    public void LoadHelper()
-    {
-        GlobalHelperData data = SaveGlobalHelperData.LoadHelper();
+    //public void LoadHelper()
+    //{
+    //    GlobalHelperData data = SaveGlobalHelperData.LoadHelper();
 
-        baseDataSaved = data.baseDataSaved;
-    }
+    //    baseDataSaved = data.baseDataSaved;
+    //}
 
     public void OnPlayButton()
     {
@@ -104,25 +108,25 @@ public class GlobalHelper : MonoBehaviour
     }
 
 
-    public void NewGameMask()
-    {
-        if (baseDataSaved == false)
-        {
-            Debug.Log("yo");
-            NewGameButtonGO.SetActive(false);
-            NewGameButtonMaskGO.SetActive(true);
-        }
-        else if (baseDataSaved == true)
-        {
-            NewGameButtonGO.SetActive(true);
-            NewGameButtonMaskGO.SetActive(false);
-        }
-    }
-    public void OnNewGameButton()
-    {
-        newGame = true;
-        SceneManager.LoadScene(1);
-    }
+    //public void NewGameMask()
+    //{
+    //    if (baseDataSaved == false)
+    //    {
+    //        Debug.Log("yo");
+    //        NewGameButtonGO.SetActive(false);
+    //        NewGameButtonMaskGO.SetActive(true);
+    //    }
+    //    else if (baseDataSaved == true)
+    //    {
+    //        NewGameButtonGO.SetActive(true);
+    //        NewGameButtonMaskGO.SetActive(false);
+    //    }
+    //}
+    //public void OnNewGameButton()
+    //{
+    //    newGame = true;
+    //    SceneManager.LoadScene(1);
+    //}
 
     public void OnSettingsButton()
     {

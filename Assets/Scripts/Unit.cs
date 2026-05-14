@@ -21,68 +21,68 @@ public class Unit : MonoBehaviour
 
     public float ennemyDamage;
 
-    public static Unit instance;
+    //public static Unit instance;
 
-    private void Awake()
-    {
-        instance = this;
-    }
+    //private void Awake()
+    //{
+    //    instance = this;
+    //}
 
-    public void SavePlayer()
-    {
-        SaveSystem.SavePlayer(this);
-    }
+    //public void SavePlayer()
+    //{
+    //    SaveSystem.SavePlayer(this);
+    //}
 
-    public void LoadPlayer()
-    {
-        PlayerData data = SaveSystem.LoadPlayer();
+    //public void LoadPlayer()
+    //{
+    //    PlayerData data = SaveSystem.LoadPlayer();
 
-        unitName = data.unitName;
-        unitLevel = data.unitLevel;
+    //    unitName = data.unitName;
+    //    unitLevel = data.unitLevel;
 
-        strength = data.strength;
-        spirit = data.spirit;
-        constitution = data.constitution;
+    //    strength = data.strength;
+    //    spirit = data.spirit;
+    //    constitution = data.constitution;
 
-        maxMana = data.maxMana;
-        mana = data.mana;
+    //    maxMana = data.maxMana;
+    //    mana = data.mana;
 
-        maxHP = data.maxHP;
-        currentHP = data.currentHP;
+    //    maxHP = data.maxHP;
+    //    currentHP = data.currentHP;
 
-        Vector2 position;
-        position.x = data.position[0];
-        position.y = data.position[1];
-        transform.position = position;
-    }
-    public void SaveBasePlayer()
-    {
-        Debug.Log("a");
-        SaveBaseData.SavePlayerBaseData(this);
-    }
+    //    Vector2 position;
+    //    position.x = data.position[0];
+    //    position.y = data.position[1];
+    //    transform.position = position;
+    //}
+    //public void SaveBasePlayer()
+    //{
+    //    Debug.Log("a");
+    //    SaveBaseData.SavePlayerBaseData(this);
+    //}
 
-    public void LoadBasePlayer()
-    {
-        PlayerBaseData data = SaveBaseData.LoadPlayer();
+    //public void LoadBasePlayer()
+    //{
+    //    PlayerBaseData data = SaveBaseData.LoadPlayer();
 
-        unitName = data.unitName;
-        unitLevel = data.unitLevel;
+    //    unitName = data.unitName;
+    //    unitLevel = data.unitLevel;
 
-        strength = data.strength;
-        spirit = data.spirit;
-        constitution = data.constitution;
+    //    strength = data.strength;
+    //    spirit = data.spirit;
+    //    constitution = data.constitution;
 
-        maxMana = data.maxMana;
-        mana = data.mana;
+    //    maxMana = data.maxMana;
+    //    mana = data.mana;
 
-        maxHP = data.maxHP;
-        currentHP = data.currentHP;
+    //    maxHP = data.maxHP;
+    //    currentHP = data.currentHP;
 
-        Vector2 position;
-        position.x = data.position[0];
-        position.y = data.position[1];
-        transform.position = position;
-    }
+    //    Vector2 position;
+    //    position.x = data.position[0];
+    //    position.y = data.position[1];
+    //    transform.position = position;
+    //}
 
     public bool TakeDamage(float dmg)
     {

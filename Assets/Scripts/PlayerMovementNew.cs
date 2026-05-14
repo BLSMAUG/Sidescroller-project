@@ -33,6 +33,7 @@ public class PlayerMovementNew : MonoBehaviour
     public float lagJumpTimer;
 
     public GameObject bulleInterraction;
+    public Animator playerAnimator;
 
     public static PlayerMovementNew instance;
 
@@ -40,6 +41,7 @@ public class PlayerMovementNew : MonoBehaviour
     {
         instance = this;
         rb = GetComponent<Rigidbody2D>();
+        playerAnimator = GetComponent<Animator>();
     }
 
     void FixedUpdate()
@@ -98,7 +100,15 @@ public class PlayerMovementNew : MonoBehaviour
     {
         horizontalMovement = context.ReadValue<Vector2>().x;
         
-        
+        if (horizontalMovement != 0)
+        {
+            playerAnimator.SetBool("isWalking", true);
+        }
+        else if (horizontalMovement == 0)
+        {
+            playerAnimator.SetBool("isWalking", false);
+        }
+
         if (horizontalMovement > 0)
         {
             transform.localScale = new Vector3(1, 1, 1);

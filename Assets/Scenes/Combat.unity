@@ -2817,7 +2817,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 823123976}
         m_TargetAssemblyTypeName: BattleSystem, Assembly-CSharp
-        m_MethodName: OnBuddha_sWrathButton
+        m_MethodName: OnB_WrathButtonNoMana
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2829,7 +2829,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 823123976}
         m_TargetAssemblyTypeName: BattleSystem, Assembly-CSharp
-        m_MethodName: OnB_WrathButtonNoMana
+        m_MethodName: OnBuddha_sWrathButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8059,8 +8059,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GlobalHelper
   SettingsMenuGO: {fileID: 1895951480}
   ExitConfirmGO: {fileID: 1871879709}
-  NewGameButtonGO: {fileID: 0}
-  NewGameButtonMaskGO: {fileID: 0}
   PlayerSpawnPointGO: {fileID: 0}
   playerPrefab: {fileID: 0}
 --- !u!4 &1632053236
@@ -8910,6 +8908,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1800957560}
   m_CullTransparentMesh: 1
+--- !u!1 &1828779171
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1828779173}
+  - component: {fileID: 1828779172}
+  m_Layer: 0
+  m_Name: AspectRatioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1828779172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1828779171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18a7c3e0f6191e64eaee4f7d98a372f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ForceAspectRatio
+  targetAspect: 1.7777778
+--- !u!4 &1828779173
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1828779171}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 251.93575, y: 181.95923, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1843039149
 GameObject:
   m_ObjectHideFlags: 0
@@ -10702,6 +10745,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1843039152}
+  - {fileID: 1828779173}
   - {fileID: 1632053236}
   - {fileID: 823123977}
   - {fileID: 1086225519}
