@@ -1384,7 +1384,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8171e8f8e1b4e8e479f22a001c6b12b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovementNew
-  moveSpeed: 6
+  moveSpeed: 3.5
   groundAcceleration: 15
   jumpForce: 5
   airAcceleration: 4.5
@@ -1399,6 +1399,7 @@ MonoBehaviour:
   coyoteTimer: 0
   lagJumpTimer: 0
   bulleInterraction: {fileID: 3845345755229799158}
+  playerAnimator: {fileID: 0}
   SettingsMenuGO: {fileID: 4851431494916304246}
   ExitConfirmGO: {fileID: 6247434788085622818}
 --- !u!50 &3583822093632405019
