@@ -24,6 +24,7 @@ public class PlayerMovementNew : MonoBehaviour
     float horizontalMovement;
     private bool isGrounded;
     private bool jumpRequested;
+    private bool isJumping;
 
     private bool isDashing;
     private bool dashRequested;
@@ -127,6 +128,8 @@ public class PlayerMovementNew : MonoBehaviour
         if(context.performed && isGrounded)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+            playerAnimator.SetBool("isJumping", true);
+            isJumping = true;
         }
         else if (context.performed && !isGrounded)
         {
@@ -195,11 +198,21 @@ public class PlayerMovementNew : MonoBehaviour
             cooldownTimer -= Time.fixedDeltaTime;
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground") && rb.linearVelocity.y == 0)
+        {
+            playerAnimator.SetBool("isJumping", false);
+            playerAnimator.SetBool("isFalling", false);
+            isJumping = false;
+        }
+    }
     private void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Ground") && rb.linearVelocity.y < 0)
         {
             coyoteTimer = 0.075f;
+            playerAnimator.SetBool("isFalling", true);
         }
     }
 }
